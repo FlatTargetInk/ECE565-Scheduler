@@ -2,9 +2,8 @@
 echo "Running scripts concurrently..."
 touch logfile
 time $( ./create_large_file.sh >> logfile & ./gen_rsa_keys.sh >> logfile & ./create_many_little_files.sh >> logfile & wait)
-echo "Done Running scripts concCleaning up:urrently."
+echo "Done Running scripts concurrently."
 echo "Cleaning up:"
-echo "Removing logfile..."
 rm -f logfile
 echo "Removing old large file..."
 rm -f large_file large_file.xz
