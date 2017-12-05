@@ -2244,8 +2244,8 @@ sched_userret(struct thread *td)
 	    ("thread with borrowed priority returning to userland"));
 	if (td->td_priority != td->td_user_pri) {
 		thread_lock(td);
-		td->td_priority = 0; //td->td_user_pri
-		td->td_base_pri = 0; //td->td_user_pri
+		td->td_priority = td->td_user_pri;
+		td->td_base_pri = td->td_user_pri;
 		tdq_setlowpri(TDQ_SELF(), td);
 		thread_unlock(td);
         }
