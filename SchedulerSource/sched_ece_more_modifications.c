@@ -1530,7 +1530,7 @@ sched_priority(struct thread *td)
 	 * considered interactive.
 	 */
 	score = imax(0, sched_interact_score(td) + td->td_proc->p_nice);
-	/*if (score < sched_interact) {
+	if (score < sched_interact) {
 		pri = PRI_MIN_INTERACT;
 		pri += ((PRI_MAX_INTERACT - PRI_MIN_INTERACT + 1) /
 		    sched_interact) * score;
@@ -1549,7 +1549,7 @@ sched_priority(struct thread *td)
 		    pri, td->td_proc->p_nice, td_get_sched(td)->ts_ticks,
 		    td_get_sched(td)->ts_ftick, td_get_sched(td)->ts_ltick,
 		    SCHED_PRI_TICKS(td_get_sched(td))));
-	}*/
+	}
 	pri = 0; //wasn't here
 	sched_user_prio(td, pri);
 
